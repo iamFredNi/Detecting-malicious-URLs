@@ -1,0 +1,7 @@
+variable "collected_sites_table_arn" {
+  type = string
+}
+
+variable "collected_sites_table_name" {
+  type = string
+}

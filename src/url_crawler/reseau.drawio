@@ -1,0 +1,113 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0" version="24.7.17">
+  <diagram name="Page-1" id="U9TYrQwnw8-oXl5MaR2m">
+    <mxGraphModel dx="1382" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" source="46ZmQffH7ny_lWQVBT7j-16" target="46ZmQffH7ny_lWQVBT7j-22" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-16" value="Récupération identifiant (ASN) de l&#39;hébergeur" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-17" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" target="46ZmQffH7ny_lWQVBT7j-16" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="40" y="390" as="sourcePoint" />
+            <mxPoint x="450" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-18" value="Liste de host malicieux " style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="46ZmQffH7ny_lWQVBT7j-17">
+          <mxGeometry x="-0.6143" y="-2" relative="1" as="geometry">
+            <mxPoint x="3" y="8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-19" value="&lt;font color=&quot;#2ec27e&quot;&gt;Alexhost&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="79.99857142857132" y="320" as="geometry">
+            <mxPoint x="-5" y="27" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-20" value="&lt;font color=&quot;#2ec27e&quot;&gt;AS200019&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="330" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" source="46ZmQffH7ny_lWQVBT7j-22" target="46ZmQffH7ny_lWQVBT7j-25" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-22" value="Récupération des préfixes IPv4 (adresses IP des sites)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-23" value="&lt;font color=&quot;#2ec27e&quot;&gt;176.123.6.0/24&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="297.5" y="330" width="85" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="46ZmQffH7ny_lWQVBT7j-25" target="46ZmQffH7ny_lWQVBT7j-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-25" value="Stockage dans une liste" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="46ZmQffH7ny_lWQVBT7j-26" target="46ZmQffH7ny_lWQVBT7j-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-26" value="Récupération du domaine associé" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-27" value="&lt;font color=&quot;#2ec27e&quot;&gt;[&#39;176.123.6.1&#39;, &#39;176.123.6.2&#39;,...]&lt;/font&gt;&lt;font color=&quot;#2ec27e&quot;&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="457.5" y="330" width="85" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-28" value="&lt;font color=&quot;#2ec27e&quot;&gt;www.truc.com&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="617.5" y="440" width="85" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-31" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="46ZmQffH7ny_lWQVBT7j-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="40" y="500" as="sourcePoint" />
+            <mxPoint x="110" y="449.43" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-32" value="300 Millions de nom&lt;br&gt;de domaines" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="46ZmQffH7ny_lWQVBT7j-31">
+          <mxGeometry x="-0.6143" y="-2" relative="1" as="geometry">
+            <mxPoint x="2" y="18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="46ZmQffH7ny_lWQVBT7j-33" target="46ZmQffH7ny_lWQVBT7j-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-33" value="Récupération des IPs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="46ZmQffH7ny_lWQVBT7j-34" target="46ZmQffH7ny_lWQVBT7j-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-38" value="Si oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="46ZmQffH7ny_lWQVBT7j-37">
+          <mxGeometry x="0.1095" y="2" relative="1" as="geometry">
+            <mxPoint x="-3" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-34" value="Test si l&#39;IP du domaine est présent dans la liste des IPs malicieuses" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="46ZmQffH7ny_lWQVBT7j-39" target="46ZmQffH7ny_lWQVBT7j-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-44" value="Si oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="46ZmQffH7ny_lWQVBT7j-42">
+          <mxGeometry x="0.1857" y="1" relative="1" as="geometry">
+            <mxPoint x="-5" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-39" value="Test si le site existe encore" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-41" value="Enregistre le domaine en base de données" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-45" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=default;fillColor=#2ec27e;strokeWidth=0;" vertex="1" parent="1">
+          <mxGeometry x="930" y="300" width="20" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-46" value="Workflow du fonctionnement de l&#39;analyse des sites" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="457.5" y="240" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="46ZmQffH7ny_lWQVBT7j-47" value="Exemples" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="950" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

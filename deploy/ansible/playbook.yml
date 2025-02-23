@@ -1,0 +1,191 @@
+---
+- name: Setup URL Crawler instance
+  hosts: url_crawler
+  become: yes
+
+  tasks:
+    - name: Ensure python3, pip and virtualenv are installed
+      ansible.builtin.package: 
+        name: '{{ item }}'
+        state: present
+        update_cache: yes
+      loop:
+        - python3
+        - python3-pip
+        - python3-virtualenv
+      
+    - name: Add Google Repo
+      shell:
+        cmd: |
+          sudo tee /etc/yum.repos.d/google-chrome.repo <<EOF
+          [google-chrome]
+          name=Google Chrome
+          baseurl=https://dl.google.com/linux/chrome/rpm/stable/x86_64
+          enabled=1
+          gpgcheck=1
+          gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+          EOF
+    
+    - name: Install Chrome
+      shell:
+        cmd: |
+          dnf install -y google-chrome-stable
+    
+    - name: Ensure /app directory exists
+      ansible.builtin.file:
+        dest: /app
+        state: directory
+
+    - name: Ensure python scripts are present
+      ansible.posix.synchronize:
+        src: playbook_dir ~ /../../../src
+        dest: /app
+        recursive: yes
+        rsync_opts:
+          - "--delete"
+
+    - name: Ensure ansible user owns the files
+      ansible.builtin.file:
+        path: /app
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        recurse: yes
+
+    - name: Copy requirements.txt
+      ansible.builtin.copy:
+        src: ../../REQUIREMENTS.txt
+        dest: /app/src/requirements.txt
+
+    - name: Install python dependencies
+      shell:
+        cmd: |
+          python3 -m venv /app/.venv && \
+          source /app/.venv/bin/activate && \
+          pip install -r /app/src/requirements.txt
+      # ansible.builtin.pip:
+      #   requirements: /app/requirements.txt
+      #   virtualenv: /app/.venv
+
+    - name: Add source code to PYTHONPATH
+      shell:
+        cmd: echo "\nexport PYTHONPATH=$PYTHONPATH:/app" >> ~/.bashrc
+    
+    - name: Fix syntax error in dependency
+      shell:
+        cmd: sed -i 's/raise SafeBrowsingWeirdError(r.status_code, "", "", "")/raise SafeBrowsingWeirdError(r.status_code, "", "")/' /app/.venv/lib/python3.9/site-packages/pysafebrowsing/api.py
+
+    - name: Create the systemd service file for crawler
+      copy:
+        dest: /etc/systemd/system/url_crawler.service
+        content: |
+          [Unit]
+          Description=URL Crawler Service
+          After=network.target
+
+          [Service]
+          Type=simple
+          ExecStart=/bin/bash -c 'source /app/.venv/bin/activate && python main.py'
+          Restart=always
+          RestartSec=5
+          User={{ ansible_user }}
+          WorkingDirectory=/app/src/url_crawler
+          Environment="PYTHONPATH=/app"
+          Environment="AWS_REGION=eu-west-3"
+          Environment="AWS_DEFAULT_REGION=eu-west-3"
+          Environment="TABLE_NAME=CollectedSites"
+          StandardOutput=syslog
+          StandardError=syslog
+          SyslogIdentifier=url_crawler
+
+          [Install]
+          WantedBy=multi-user.target
+      notify: 
+        - Reload systemd
+
+    - name: Create the systemd timer file for url_crawler
+      copy:
+        dest: /etc/systemd/system/url_crawler.timer
+        content: |
+          [Unit]
+          Description=Timer to restart the URL Crawler Service daily
+
+          [Timer]
+          OnCalendar=*-*-* 07:00:00
+          Persistent=true
+
+          [Install]
+          WantedBy=timers.target
+      notify:
+        - Reload systemd
+
+    - name: Create the systemd service file for checker
+      copy:
+        dest: /etc/systemd/system/checker.service
+        content: |
+          [Unit]
+          Description=URL Checker Service
+          After=network.target
+
+          [Service]
+          Type=simple
+          ExecStart=/bin/bash -c 'source /app/.venv/bin/activate && python checker.py'
+          User={{ ansible_user }}
+          WorkingDirectory=/app/src/checker
+          Environment="PYTHONPATH=/app"
+          Environment="AWS_REGION=eu-west-3"
+          Environment="AWS_DEFAULT_REGION=eu-west-3"
+          Environment="TABLE_NAME=CollectedSites"
+          StandardOutput=syslog
+          StandardError=syslog
+          SyslogIdentifier=checker
+          RuntimeMaxSec=21600
+
+          [Install]
+          WantedBy=multi-user.target
+      notify: 
+        - Reload systemd
+
+    - name: Create the systemd timer file for checker
+      copy:
+        dest: /etc/systemd/system/checker.timer
+        content: |
+          [Unit]
+          Description=Timer to run the URL Checker Service daily
+
+          [Timer]
+          OnCalendar=*-*-* 07:00:00
+          Persistent=true
+
+          [Install]
+          WantedBy=timers.target
+      notify: 
+        - Reload systemd
+
+    - name: Ensure the crawler service is enabled and started
+      systemd:
+        name: url_crawler.service
+        enabled: yes
+        state: started
+
+    - name: Ensure the serice crawler timer is enabled
+      systemd:
+        name: url_crawler.timer
+        enabled: yes
+        state: started
+
+    - name: Ensure the service checker clock is enabled
+      systemd:
+        name: checker.timer
+        enabled: yes
+        state: started
+
+    - name: Start the checker service for the first time
+      systemd:
+        name: checker.service
+        enabled: yes
+        state: started
+
+  handlers:
+    - name: Reload systemd
+      command: systemctl daemon-reload

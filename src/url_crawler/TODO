@@ -1,0 +1,4 @@
+- amélioration malicious_ips -> tester les ips si elles sont associés à un domain.
+- enregistrer en base de données les domaines
+- gérer selenium
+- gerer les sites de telechargement avec virus (photoshop etc...)

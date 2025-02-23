@@ -1,0 +1,6 @@
+boto3==1.35.36
+python-nmap==0.7.1
+selenium==4.25.0
+praw==7.8.1
+certstream==1.12
+pysafebrowsing==0.1.3
